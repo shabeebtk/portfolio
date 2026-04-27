@@ -1,0 +1,94 @@
+[
+  {
+    "id": "about",
+    "keywords": [
+      "who",
+      "about",
+      "summary",
+      "introduce",
+      "background",
+      "shabeeb"
+    ],
+    "content": "Shabeeb TK is a Python Full Stack Developer based in Kerala, India, focusing on backend architecture, secure APIs, React/Next.js user experiences, and clean production delivery. He was promoted to Senior Development Engineer at CaretCloud Technology Pvt Ltd."
+  },
+  {
+    "id": "skills",
+    "keywords": [
+      "skills",
+      "tech",
+      "stack",
+      "backend",
+      "frontend",
+      "django",
+      "fastapi",
+      "react",
+      "next",
+      "typescript",
+      "postgresql",
+      "redis",
+      "aws",
+      "celery",
+      "websockets",
+      "jwt",
+      "saml sso",
+      "multi-tenant saas"
+    ],
+    "content": "Core technologies include Python, Django, Django REST Framework, FastAPI, React, Next.js, TypeScript, PostgreSQL, Redis, AWS, Celery, WebSockets, JWT, Multi-tenant SaaS, and SAML SSO."
+  },
+  {
+    "id": "experience",
+    "keywords": [
+      "experience",
+      "career",
+      "senior",
+      "work",
+      "apis",
+      "saas",
+      "mfa",
+      "sso",
+      "integration",
+      "multi-tenant"
+    ],
+    "content": "As a Senior Development Engineer at CaretCloud Technology Pvt Ltd (May 2024 - Mar 2026), Shabeeb was promoted from Associate Development Engineer. He worked as a core backend owner in product SaaS delivery. He designed multi-tenant architecture with Django, DRF, and PostgreSQL plus SSO/MFA with Redis and Celery. He built and maintained 50+ REST APIs for authentication, admin workflows, and service integrations, and contributed to frontend-aligned product delivery by integrating APIs with React/Next.js experiences and realtime workflows."
+  },
+  {
+    "id": "projects",
+    "keywords": [
+      "projects",
+      "portfolio",
+      "goatza",
+      "playoff",
+      "compliance",
+      "platform",
+      "redorange ai"
+    ],
+    "content": "Key projects: 1) Goatza (https://goatza.com) - A sports networking platform connecting players, coaches, and scouts with ranked feed and real-time chat (Stack: Django, DRF, Next.js, PostgreSQL, Redis, WebSockets). 2) Playoff (https://github.com/shabeebtk/turf-booking-management-django-rest-framework-backend.git) - A turf booking platform with slot booking, public games, participant chat, and production deployment on AWS (Stack: Django, DRF, AWS EC2, Nginx, Gunicorn, Daphne). 3) RedOrange AI (https://redorange.ai/) - An enterprise AI compliance platform project delivered at CaretCloud, focused on multi-tenant security, SSO, and integration-driven workflows (Stack: Django, DRF, FastAPI, SAML SSO, MFA, Redis, Celery)."
+  },
+  {
+    "id": "hire",
+    "keywords": [
+      "hire",
+      "why",
+      "strength",
+      "value",
+      "fit",
+      "impact",
+      "full-stack"
+    ],
+    "content": "Why hire Shabeeb: He brings strong backend ownership, product thinking, and frontend-backend full-stack execution. He has delivered enterprise SaaS systems, production integrations, and realtime user experiences with a focus on quality, scalability, and security."
+  },
+  {
+    "id": "contact",
+    "keywords": [
+      "contact",
+      "email",
+      "phone",
+      "linkedin",
+      "github",
+      "resume",
+      "reach",
+      "availability"
+    ],
+    "content": "Contact details: Phone +91 8848967775, Email shabeebtk768@gmail.com, LinkedIn https://linkedin.com/in/shabeebtk, GitHub https://github.com/shabeebtk, Resume https://drive.google.com/file/d/16e8-AnarRn31QiTIK5XdOvHPAzoYlCEI/view?usp=sharing. Availability details: Please contact directly to confirm current availability and notice period."
+  }
+]
