@@ -242,7 +242,7 @@ export default function ChatWidget() {
                   <Input
                     ref={inputRef}
                     value={input}
-                    maxLength={500}
+                    maxLength={200}
                     autoComplete="off"
                     placeholder="Ask about Shabeeb's skills, work, or projects..."
                     onChange={(event) => setInput(event.target.value)}
@@ -262,6 +262,17 @@ export default function ChatWidget() {
                   >
                     <SendHorizontal className="h-4 w-4" />
                   </Button>
+                </div>
+                <div className="mt-1.5 flex justify-end px-1">
+                  <span 
+                    className={`text-[10px] transition-colors ${
+                      input.length >= 200 
+                        ? "text-destructive font-medium" 
+                        : "text-muted-foreground/70"
+                    }`}
+                  >
+                    {input.length} / 200
+                  </span>
                 </div>
               </div>
             </div>

@@ -78,13 +78,13 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     try {
       rawBody = await request.json()
     } catch {
-      return NextResponse.json({ error: "Invalid JSON request body." }, { status: 400 })
+      return NextResponse.json({ error: "Hmm, that didn't go through properly. Could you try asking again?" }, { status: 400 })
     }
 
     const parsed = requestBodySchema.safeParse(rawBody)
 
     if (!parsed.success) {
-      return NextResponse.json({ error: "Invalid request format." }, { status: 400 })
+      return NextResponse.json({ error: "Your message seems a bit too long or contains unsupported characters. Please try a shorter message!" }, { status: 400 })
     }
 
     const sanitized = sanitizeUserInput(parsed.data.message)

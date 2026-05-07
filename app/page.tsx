@@ -18,6 +18,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import ChatWidget from "@/components/ChatWidget"
+import CopyContactButton from "@/components/CopyContactButton"
 import OpenChatShortcutButton from "@/components/OpenChatShortcutButton"
 
 const skills = [
@@ -128,20 +129,15 @@ export default function Home() {
 
             <div className="flex flex-col gap-3 sm:min-w-[250px]">
               <OpenChatShortcutButton />
+              <CopyContactButton
+                contactValue="shabeebtk768@gmail.com"
+                label="Email Shabeeb"
+                icon={<Mail className="h-4 w-4" />}
+                className={heroActionButtonClass}
+              />
               <Button asChild className={heroActionButtonClass}>
                 <a
-                  href="mailto:shabeebtk768@gmail.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="justify-between"
-                >
-                  Email Shabeeb
-                  <Mail className="h-4 w-4" />
-                </a>
-              </Button>
-              <Button asChild className={heroActionButtonClass}>
-                <a
-                  href="https://drive.google.com/file/d/16e8-AnarRn31QiTIK5XdOvHPAzoYlCEI/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1CXdHpK1GnzZJe6pMHCcrrVNHrsnqleKb/view?usp=sharing"
                   target="_blank"
                   rel="noreferrer"
                   className="justify-between"
@@ -150,12 +146,12 @@ export default function Home() {
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
               </Button>
-              <Button asChild variant="ghost">
-                <a href="tel:+918848967775" className="justify-between">
-                  +91 8848967775
-                  <Phone className="h-4 w-4" />
-                </a>
-              </Button>
+              <CopyContactButton
+                contactValue="+918848967775"
+                label="+91 8848967775"
+                icon={<Phone className="h-4 w-4" />}
+                variant="ghost"
+              />
               <div className="flex items-center gap-2">
                 <Button asChild variant="outline" size="sm" className="flex-1">
                   <a

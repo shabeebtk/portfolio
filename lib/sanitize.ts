@@ -1,5 +1,5 @@
-// Reduced max input length to avoid long requests and reduce token costs
-export const MAX_INPUT_LENGTH = 150
+// Max input length matching the UI's maxLength
+export const MAX_INPUT_LENGTH = 200
 
 export interface SanitizedInputResult {
   value: string
