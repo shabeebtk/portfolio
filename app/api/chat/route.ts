@@ -5,6 +5,7 @@ import { checkRateLimit } from "@/lib/rate-limit"
 import { createContextSnippet, retrieveRelevantSections } from "@/lib/retriever"
 import {
   MAX_INPUT_LENGTH,
+  MAX_HISTORY_LENGTH,
   sanitizeHistoryContent,
   sanitizeUserInput,
 } from "@/lib/sanitize"
@@ -20,7 +21,7 @@ const requestBodySchema = z.object({
     .array(
       z.object({
         role: z.enum(["user", "assistant"]),
-        content: z.string().min(1).max(MAX_INPUT_LENGTH),
+        content: z.string().min(1).max(MAX_HISTORY_LENGTH * 2),
       })
     )
     .max(8)

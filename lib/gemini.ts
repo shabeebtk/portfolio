@@ -102,54 +102,74 @@ export function createGeminiChatStream({
       }
 
       void (async () => {
-        try {
-          const stream = await client.models.generateContentStream({
-            model: MODEL_NAME,
-            contents: buildPrompt(question, context, history),
-            config: {
-              systemInstruction: SYSTEM_PROMPT,
-              temperature: 0.2,
-              topP: 0.8,
-              maxOutputTokens: 450,
-              abortSignal: abortController.signal,
-            },
-          })
+        let retries = 0
+        const maxRetries = 2
+        const baseWaitMs = 1500
 
-          let hasOutput = false
+        while (true) {
+          try {
+            const stream = await client.models.generateContentStream({
+              model: MODEL_NAME,
+              contents: buildPrompt(question, context, history),
+              config: {
+                systemInstruction: SYSTEM_PROMPT,
+                temperature: 0.2,
+                topP: 0.8,
+                maxOutputTokens: 450,
+                abortSignal: abortController.signal,
+              },
+            })
 
-          for await (const chunk of stream) {
+            let hasOutput = false
+
+            for await (const chunk of stream) {
+              if (abortController.signal.aborted) {
+                break
+              }
+
+              const text = chunk.text ?? ""
+
+              if (!text) {
+                continue
+              }
+
+              hasOutput = true
+              controller.enqueue(encoder.encode(text))
+            }
+
+            if (!hasOutput && !abortController.signal.aborted) {
+              controller.enqueue(
+                encoder.encode(
+                  "I couldn't find a reliable answer for that in Shabeeb's portfolio context. Feel free to ask about his skills, projects, experience, or how to contact him!"
+                )
+              )
+            }
+            break
+          } catch {
             if (abortController.signal.aborted) {
+              controller.enqueue(
+                encoder.encode("Hmm, that took a bit too long! Please ask a shorter question and try again.")
+              )
               break
             }
 
-            const text = chunk.text ?? ""
-
-            if (!text) {
+            if (retries < maxRetries) {
+              retries++
+              await new Promise((resolve) => setTimeout(resolve, baseWaitMs * retries))
               continue
             }
 
-            hasOutput = true
-            controller.enqueue(encoder.encode(text))
-          }
-
-          if (!hasOutput) {
             controller.enqueue(
-              encoder.encode(
-                "I couldn't find a reliable answer for that in Shabeeb's portfolio context. Feel free to ask about his skills, projects, experience, or how to contact him!"
-              )
+              encoder.encode("Oops, I'm unable to respond right now. Please try again in a moment. I might need a quick break! 😊")
             )
+            break
           }
-        } catch {
-          const message = abortController.signal.aborted
-            ? "Hmm, that took a bit too long! Please ask a shorter question and try again."
-            : "Oops, I'm unable to respond right now. Please try again in a moment. I might need a quick break! 😊"
-          controller.enqueue(encoder.encode(message))
-        } finally {
-          if (timeoutHandle) {
-            clearTimeout(timeoutHandle)
-          }
-          closeSafely()
         }
+
+        if (timeoutHandle) {
+          clearTimeout(timeoutHandle)
+        }
+        closeSafely()
       })()
     },
     cancel() {

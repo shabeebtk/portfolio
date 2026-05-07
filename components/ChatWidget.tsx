@@ -15,6 +15,7 @@ import SuggestionChips from "@/components/SuggestionChips"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useChat } from "@/hooks/useChat"
+import { MAX_INPUT_LENGTH } from "@/lib/sanitize"
 
 const THEME_STORAGE_KEY = "portfolio-theme"
 
@@ -242,7 +243,7 @@ export default function ChatWidget() {
                   <Input
                     ref={inputRef}
                     value={input}
-                    maxLength={200}
+                    maxLength={MAX_INPUT_LENGTH}
                     autoComplete="off"
                     placeholder="Ask about Shabeeb's skills, work, or projects..."
                     onChange={(event) => setInput(event.target.value)}
@@ -266,12 +267,12 @@ export default function ChatWidget() {
                 <div className="mt-1.5 flex justify-end px-1">
                   <span 
                     className={`text-[10px] transition-colors ${
-                      input.length >= 200 
+                      input.length >= MAX_INPUT_LENGTH 
                         ? "text-destructive font-medium" 
                         : "text-muted-foreground/70"
                     }`}
                   >
-                    {input.length} / 200
+                    {input.length} / {MAX_INPUT_LENGTH}
                   </span>
                 </div>
               </div>

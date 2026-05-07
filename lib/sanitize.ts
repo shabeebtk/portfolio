@@ -1,6 +1,9 @@
 // Max input length matching the UI's maxLength
 export const MAX_INPUT_LENGTH = 200
 
+// Max history length for context given to Gemini API (larger than input length to allow AI responses)
+export const MAX_HISTORY_LENGTH = 1000
+
 export interface SanitizedInputResult {
   value: string
   blocked: boolean
@@ -58,5 +61,5 @@ export function sanitizeUserInput(rawValue: string): SanitizedInputResult {
 }
 
 export function sanitizeHistoryContent(value: string): string {
-  return normalizeWhitespace(stripDangerousMarkup(value)).slice(0, 300)
+  return normalizeWhitespace(stripDangerousMarkup(value)).slice(0, MAX_HISTORY_LENGTH)
 }
