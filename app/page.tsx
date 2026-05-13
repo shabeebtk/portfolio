@@ -130,14 +130,14 @@ export default function Home() {
             <div className="flex flex-col gap-3 sm:min-w-[250px]">
               <OpenChatShortcutButton />
               <CopyContactButton
-                contactValue="shabeebtk768@gmail.com"
+                contactValue="shabeebtk.dev@gmail.com"
                 label="Email Shabeeb"
                 icon={<Mail className="h-4 w-4" />}
                 className={heroActionButtonClass}
               />
               <Button asChild className={heroActionButtonClass}>
                 <a
-                  href="https://drive.google.com/file/d/1CXdHpK1GnzZJe6pMHCcrrVNHrsnqleKb/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1CXdHpK1GnzZJe6pMHCcrrVNHrsnqleKb/view?usp=drive_link"
                   target="_blank"
                   rel="noreferrer"
                   className="justify-between"
